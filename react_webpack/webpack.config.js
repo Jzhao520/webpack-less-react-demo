@@ -81,7 +81,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template : __dirname + "/app/index.tmpl.html"
         }),
-        new ClearWebpackPlugin('build/*.*',{
+        new ClearWebpackPlugin('build/*.*',{ //清除build文件下所有需要重新生成的文件
             root: __dirname,
             verbose: true,
             dry: false

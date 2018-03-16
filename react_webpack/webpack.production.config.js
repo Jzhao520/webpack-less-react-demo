@@ -9,8 +9,8 @@ module.exports = {
     devtool:'none',
     entry : __dirname + "/app/main.js",  //入口文件
     output : {
-        path : path.resolve(__dirname + "/build"),//输出文件的目标路径
-        filename : "bundle-[hash].js"
+        path : path.join(__dirname + "/build"),//输出文件的目标路径
+        // filename : "bundle-[hash].js"
     },
     devServer : {
         contentBase : "./build", //本地服务器所加载的页面所在目录
@@ -29,20 +29,24 @@ module.exports = {
                 //排除匹配文件
                 exclude : /node_modules/
             },{
-                test : /\.css$/,
+                test : /\.(less|css)$/,
                 use:ExtractTextPlugin.extract({
-                    fallback : "style-loader",
-                    use :[
-                        {
-                            loader:"css-loader",
+                    use :[{
+                            loader : "css-loader",
                             options : {
                                 modules : true,
+                                minimize: true,  //启用/禁用 压缩css
                                 localIdentName: '[name]__[local]__[hash:base64:5]'
                             }
                         },{
-                            loader:"postcss-loader"
-                        }
-                    ]
+                            loader : "less-loader",
+                            options: {
+                                minimize : true //启用/禁用 压缩css
+                            }
+                        },{
+                            loader : "postcss-loader"
+                        }],
+                        fallback : "style-loader"
                 })
             }
         ]
@@ -62,7 +66,10 @@ module.exports = {
             verbose: true,
             dry: false
         }),
-        new ExtractTextPlugin("comment.css"),
+        new ExtractTextPlugin({
+            filename : "[name].[contenthash].css",
+            disable: process.env.NODE_ENV === "development"
+        }),
         new webpack.HotModuleReplacementPlugin()//热加载插件
     ]
 }
