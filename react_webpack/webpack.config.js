@@ -20,7 +20,7 @@ module.exports = {
         // filename : "bundle.[hash].js", //此处和path 不能同时开启 否则会出现 "Multiple assets emit to the same filename" 错误
     },
     devServer : {
-        contentBase : "./build",
+        contentBase : path.resolve(__dirname),
         historyApiFallback : true,
         inline : true
     },
@@ -43,9 +43,10 @@ module.exports = {
                     use :[{
                             loader : "css-loader",
                             options : {
-                                modules : true,
-                                minimize: true,  //启用/禁用 压缩css
-                                localIdentName: '[name]__[local]__[hash:base64:5]'
+                                sourceMap : true,
+                                // modules : true, //启用css模块化
+                                // localIdentName: '[name]__[local]__[hash:base64:5]',
+                                minimize: true  //启用/禁用 压缩css
                             }
                         },{
                             loader : "less-loader",

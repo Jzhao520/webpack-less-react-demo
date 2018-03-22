@@ -17,5 +17,18 @@ html {
   h1, h2, h3, h4, h5, h6, p, ul {
     margin: 0;
     padding: 0;
-    color:#f00;
+    color:#555;
+  }
+
+  .comments{
+    width: 80%;
+    margin:0 auto;
+    padding:30px;
+  }
+  .form-signin-heading{
+    font-size:22px;
+    line-height: 30px;
+    padding-bottom:20px;
+    margin-bottom:10px;
+    border-bottom:1px solid #ddd;
   }

@@ -1,57 +1,39 @@
-/*less*/ 
-html{margin:@margin;padding:@padding;border:0}
-body, h1, h2, h3, h4,hr, p, dl, dt, dd, ul, ol, li, pre, form, img, fieldset, span, legend, button, input, textarea,th, td, div, td,s{
-    margin: @margin; 
-    padding:@padding;
-    list-style:none;
+@font14 :14px;
+@font12 :12px;
+@color5:#555;
+@color3:#555;
+@inline_block:inline-block;
+@radius:3px;
+.comment{
+    margin-bottom:10px;
+    .content{
+        line-height: 22px;
+        .author{
+            font-size:@font14;
+            color:@color3;
+        }
+        .metadate{
+            font-size:@font12;
+            color:@color5;
+            display: @inline_block;
+            margin-left:10px;
+        }
+        .text{
+            
+            font-size:14px;
+        }
+    }
 }
-body{
-    font-size:@font12;
-    line-height: 1.5em;
-    font-family:@fontfamily;
-    min-width: 1000px; 
-    background:@main_background; 
-}
-article,aside,details,figcaption,figure,footer,header,menu,nav,section{display:block;}
-/*自定义变量区域*/
-@zIndex:99999;
-@margin:0;
-@padding:0;
-@font12:12px;
-@fontfamily:'Microsoft Yahei';
-@main_background:#fff;
-@banner_bak:882px;
-@mainbackground:#fcfcfc;
-@scrollbackground:url("../images/scrollBg.jpg") no-repeat center 0%;
-@logo_background:url("../images/alpha_bg.png") no-repeat center top;
-@li_background:url("../images/aboutchange.jpg") no-repeat;
-@radius_icon:url("../images/radius_icon.png") no-repeat;
-@modList_background:url("../images/mod_listbackground.jpg") no-repeat;
-@item_width:100%;
-@box_width:1000px;
-@relative:relative;
-@absolute:absolute;
-@text_align:center;
-@block:block;
-@left:left;
-@transition: all .3s ease;
-.item_backgroundPostion(@x:0,@y:0){
-  @backgroundPosition:@x @y;
-  background-position:@backgroundPosition;
-}
-header{
-    position: @relative;
-    z-index: @zIndex;
-}
-#topBar_head{
-   
-    width: @item_width;
-    height:738px;
-    overflow: hidden;
-    position: @relative;
-    background: @main_background;
-}
-.topBarWrap{
-    width: @item_width;
-    background: #00e
+.reply{
+    padding:20px 0;
+    .field{
+        input{
+            margin-bottom:20px;
+        }
+        input,textarea{
+            border-radius:@radius;
+            border:1px solid #ddd;
+            width: 50%;
+        }
+    }
 }
