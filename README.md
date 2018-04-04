@@ -13,5 +13,9 @@
 	标题：webpack 4.0.0-beta.0 新特性介绍
 	链接：http://ju.outofmemory.cn/entry/343762
 	
+	
+	补充一个新版本webpack4.1 extract-text-webpack-plugin 打包失败的问题解决方法
+			sudo npm install --save-dev extract-text-webpack-plugin@next
+
 
 	其中有部分内容因版本原因，我在参考了官网以及其他部分博客，找到了解决方案，并作为demo提交到个人的仓库中，再次感谢你们
