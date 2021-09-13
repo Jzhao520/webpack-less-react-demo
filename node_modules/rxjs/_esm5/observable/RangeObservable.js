@@ -73,7 +73,7 @@ export var RangeObservable = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
         state.start = start + 1;
         this.schedule(state);
     };
-    RangeObservable.prototype._subscribe = function (subscriber) {
+    /** @deprecated internal use only */ RangeObservable.prototype._subscribe = function (subscriber) {
         var index = 0;
         var start = this.start;
         var count = this._count;
@@ -98,4 +98,4 @@ export var RangeObservable = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
     };
     return RangeObservable;
 }(Observable));
-//# sourceMappingURL=RangeObservable.js.map 
+//# sourceMappingURL=RangeObservable.js.map

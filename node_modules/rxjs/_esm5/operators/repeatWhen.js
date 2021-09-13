@@ -65,14 +65,14 @@ var RepeatWhenSubscriber = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
             if (!this.retries) {
                 this.subscribeToRetries();
             }
-            else if (this.retriesSubscription.closed) {
+            if (!this.retriesSubscription || this.retriesSubscription.closed) {
                 return _super.prototype.complete.call(this);
             }
             this._unsubscribeAndRecycle();
             this.notifications.next();
         }
     };
-    RepeatWhenSubscriber.prototype._unsubscribe = function () {
+    /** @deprecated internal use only */ RepeatWhenSubscriber.prototype._unsubscribe = function () {
         var _a = this, notifications = _a.notifications, retriesSubscription = _a.retriesSubscription;
         if (notifications) {
             notifications.unsubscribe();
@@ -84,7 +84,7 @@ var RepeatWhenSubscriber = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
         }
         this.retries = null;
     };
-    RepeatWhenSubscriber.prototype._unsubscribeAndRecycle = function () {
+    /** @deprecated internal use only */ RepeatWhenSubscriber.prototype._unsubscribeAndRecycle = function () {
         var _a = this, notifications = _a.notifications, retries = _a.retries, retriesSubscription = _a.retriesSubscription;
         this.notifications = null;
         this.retries = null;
@@ -106,4 +106,4 @@ var RepeatWhenSubscriber = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
     };
     return RepeatWhenSubscriber;
 }(OuterSubscriber));
-//# sourceMappingURL=repeatWhen.js.map 
+//# sourceMappingURL=repeatWhen.js.map

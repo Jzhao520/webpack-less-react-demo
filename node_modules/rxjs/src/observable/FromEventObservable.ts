@@ -8,9 +8,12 @@ import { Subscriber } from '../Subscriber';
 const toString: Function = Object.prototype.toString;
 
 export type NodeStyleEventEmitter = {
-  addListener: (eventName: string, handler: Function) => void;
-  removeListener: (eventName: string, handler: Function) => void;
+  addListener: (eventName: string, handler: NodeEventHandler) => void;
+  removeListener: (eventName: string, handler: NodeEventHandler) => void;
 };
+
+export type NodeEventHandler = (...args: any[]) => void;
+
 function isNodeStyleEventEmitter(sourceObj: any): sourceObj is NodeStyleEventEmitter {
   return !!sourceObj && typeof sourceObj.addListener === 'function' && typeof sourceObj.removeListener === 'function';
 }
@@ -206,15 +209,15 @@ export class FromEventObservable<T> extends Observable<T> {
     } else if (isEventTarget(sourceObj)) {
       const source = sourceObj;
       sourceObj.addEventListener(eventName, <EventListener>handler, <boolean>options);
-      unsubscribe = () => source.removeEventListener(eventName, <EventListener>handler);
+      unsubscribe = () => source.removeEventListener(eventName, <EventListener>handler, <boolean>options);
     } else if (isJQueryStyleEventEmitter(sourceObj)) {
       const source = sourceObj;
       sourceObj.on(eventName, handler);
       unsubscribe = () => source.off(eventName, handler);
     } else if (isNodeStyleEventEmitter(sourceObj)) {
       const source = sourceObj;
-      sourceObj.addListener(eventName, handler);
-      unsubscribe = () => source.removeListener(eventName, handler);
+      sourceObj.addListener(eventName, handler as NodeEventHandler);
+      unsubscribe = () => source.removeListener(eventName, handler as NodeEventHandler);
     } else {
       throw new TypeError('Invalid event target');
     }
@@ -222,7 +225,7 @@ export class FromEventObservable<T> extends Observable<T> {
     subscriber.add(new Subscription(unsubscribe));
   }
 
-  protected _subscribe(subscriber: Subscriber<T>) {
+  /** @deprecated internal use only */ _subscribe(subscriber: Subscriber<T>) {
     const sourceObj = this.sourceObj;
     const eventName = this.eventName;
     const options = this.options;

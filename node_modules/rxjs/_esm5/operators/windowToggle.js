@@ -117,7 +117,7 @@ var WindowToggleSubscriber = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
         }
         _super.prototype._complete.call(this);
     };
-    WindowToggleSubscriber.prototype._unsubscribe = function () {
+    /** @deprecated internal use only */ WindowToggleSubscriber.prototype._unsubscribe = function () {
         var contexts = this.contexts;
         this.contexts = null;
         if (contexts) {
@@ -178,4 +178,4 @@ var WindowToggleSubscriber = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
     };
     return WindowToggleSubscriber;
 }(OuterSubscriber));
-//# sourceMappingURL=windowToggle.js.map 
+//# sourceMappingURL=windowToggle.js.map

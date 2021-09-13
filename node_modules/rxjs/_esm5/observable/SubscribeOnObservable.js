@@ -47,7 +47,7 @@ export var SubscribeOnObservable = /*@__PURE__*/ (/*@__PURE__*/ function (_super
         var source = arg.source, subscriber = arg.subscriber;
         return this.add(source.subscribe(subscriber));
     };
-    SubscribeOnObservable.prototype._subscribe = function (subscriber) {
+    /** @deprecated internal use only */ SubscribeOnObservable.prototype._subscribe = function (subscriber) {
         var delay = this.delayTime;
         var source = this.source;
         var scheduler = this.scheduler;
@@ -57,4 +57,4 @@ export var SubscribeOnObservable = /*@__PURE__*/ (/*@__PURE__*/ function (_super
     };
     return SubscribeOnObservable;
 }(Observable));
-//# sourceMappingURL=SubscribeOnObservable.js.map 
+//# sourceMappingURL=SubscribeOnObservable.js.map

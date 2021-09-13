@@ -150,12 +150,12 @@ var DelayWhenSubscriber = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
  */
 var SubscriptionDelayObservable = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
     __extends(SubscriptionDelayObservable, _super);
-    function SubscriptionDelayObservable(source, subscriptionDelay) {
+    function SubscriptionDelayObservable(/** @deprecated internal use only */ source, subscriptionDelay) {
         _super.call(this);
         this.source = source;
         this.subscriptionDelay = subscriptionDelay;
     }
-    SubscriptionDelayObservable.prototype._subscribe = function (subscriber) {
+    /** @deprecated internal use only */ SubscriptionDelayObservable.prototype._subscribe = function (subscriber) {
         this.subscriptionDelay.subscribe(new SubscriptionDelaySubscriber(subscriber, this.source));
     };
     return SubscriptionDelayObservable;
@@ -192,4 +192,4 @@ var SubscriptionDelaySubscriber = /*@__PURE__*/ (/*@__PURE__*/ function (_super)
     };
     return SubscriptionDelaySubscriber;
 }(Subscriber));
-//# sourceMappingURL=delayWhen.js.map 
+//# sourceMappingURL=delayWhen.js.map

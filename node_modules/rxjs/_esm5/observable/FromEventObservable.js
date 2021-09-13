@@ -175,7 +175,7 @@ export var FromEventObservable = /*@__PURE__*/ (/*@__PURE__*/ function (_super) 
         else if (isEventTarget(sourceObj)) {
             var source_1 = sourceObj;
             sourceObj.addEventListener(eventName, handler, options);
-            unsubscribe = function () { return source_1.removeEventListener(eventName, handler); };
+            unsubscribe = function () { return source_1.removeEventListener(eventName, handler, options); };
         }
         else if (isJQueryStyleEventEmitter(sourceObj)) {
             var source_2 = sourceObj;
@@ -192,7 +192,7 @@ export var FromEventObservable = /*@__PURE__*/ (/*@__PURE__*/ function (_super) 
         }
         subscriber.add(new Subscription(unsubscribe));
     };
-    FromEventObservable.prototype._subscribe = function (subscriber) {
+    /** @deprecated internal use only */ FromEventObservable.prototype._subscribe = function (subscriber) {
         var sourceObj = this.sourceObj;
         var eventName = this.eventName;
         var options = this.options;
@@ -214,4 +214,4 @@ export var FromEventObservable = /*@__PURE__*/ (/*@__PURE__*/ function (_super) 
     };
     return FromEventObservable;
 }(Observable));
-//# sourceMappingURL=FromEventObservable.js.map 
+//# sourceMappingURL=FromEventObservable.js.map

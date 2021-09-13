@@ -163,7 +163,7 @@ export var BoundNodeCallbackObservable = /*@__PURE__*/ (/*@__PURE__*/ function (
             return new BoundNodeCallbackObservable(func, selector, args, this, scheduler);
         };
     };
-    BoundNodeCallbackObservable.prototype._subscribe = function (subscriber) {
+    /** @deprecated internal use only */ BoundNodeCallbackObservable.prototype._subscribe = function (subscriber) {
         var callbackFunc = this.callbackFunc;
         var args = this.args;
         var scheduler = this.scheduler;
@@ -263,4 +263,4 @@ function dispatchError(arg) {
     var err = arg.err, subject = arg.subject;
     subject.error(err);
 }
-//# sourceMappingURL=BoundNodeCallbackObservable.js.map 
+//# sourceMappingURL=BoundNodeCallbackObservable.js.map

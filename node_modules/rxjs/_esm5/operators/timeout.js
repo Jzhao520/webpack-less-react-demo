@@ -134,11 +134,11 @@ var TimeoutSubscriber = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
         }
         _super.prototype._next.call(this, value);
     };
-    TimeoutSubscriber.prototype._unsubscribe = function () {
+    /** @deprecated internal use only */ TimeoutSubscriber.prototype._unsubscribe = function () {
         this.action = null;
         this.scheduler = null;
         this.errorInstance = null;
     };
     return TimeoutSubscriber;
 }(Subscriber));
-//# sourceMappingURL=timeout.js.map 
+//# sourceMappingURL=timeout.js.map

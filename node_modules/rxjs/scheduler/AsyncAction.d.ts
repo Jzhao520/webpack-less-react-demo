@@ -8,11 +8,11 @@ import { AsyncScheduler } from './AsyncScheduler';
  */
 export declare class AsyncAction<T> extends Action<T> {
     protected scheduler: AsyncScheduler;
-    protected work: (this: AsyncAction<T>, state?: T) => void;
     id: any;
     state: T;
     delay: number;
     protected pending: boolean;
+    protected work: (this: this, state?: T) => void;
     constructor(scheduler: AsyncScheduler, work: (this: AsyncAction<T>, state?: T) => void);
     schedule(state?: T, delay?: number): Subscription;
     protected requestAsyncId(scheduler: AsyncScheduler, id?: any, delay?: number): any;
@@ -23,5 +23,5 @@ export declare class AsyncAction<T> extends Action<T> {
      */
     execute(state: T, delay: number): any;
     protected _execute(state: T, delay: number): any;
-    protected _unsubscribe(): void;
+    /** @deprecated internal use only */ _unsubscribe(): void;
 }

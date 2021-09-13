@@ -9,8 +9,8 @@ export class AsyncAction extends Action {
     constructor(scheduler, work) {
         super(scheduler, work);
         this.scheduler = scheduler;
-        this.work = work;
         this.pending = false;
+        this.work = work;
     }
     schedule(state, delay = 0) {
         if (this.closed) {
@@ -109,7 +109,7 @@ export class AsyncAction extends Action {
             return errorValue;
         }
     }
-    _unsubscribe() {
+    /** @deprecated internal use only */ _unsubscribe() {
         const id = this.id;
         const scheduler = this.scheduler;
         const actions = scheduler.actions;

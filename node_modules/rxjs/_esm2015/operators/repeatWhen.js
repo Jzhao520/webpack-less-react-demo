@@ -55,14 +55,14 @@ class RepeatWhenSubscriber extends OuterSubscriber {
             if (!this.retries) {
                 this.subscribeToRetries();
             }
-            else if (this.retriesSubscription.closed) {
+            if (!this.retriesSubscription || this.retriesSubscription.closed) {
                 return super.complete();
             }
             this._unsubscribeAndRecycle();
             this.notifications.next();
         }
     }
-    _unsubscribe() {
+    /** @deprecated internal use only */ _unsubscribe() {
         const { notifications, retriesSubscription } = this;
         if (notifications) {
             notifications.unsubscribe();
@@ -74,7 +74,7 @@ class RepeatWhenSubscriber extends OuterSubscriber {
         }
         this.retries = null;
     }
-    _unsubscribeAndRecycle() {
+    /** @deprecated internal use only */ _unsubscribeAndRecycle() {
         const { notifications, retries, retriesSubscription } = this;
         this.notifications = null;
         this.retries = null;

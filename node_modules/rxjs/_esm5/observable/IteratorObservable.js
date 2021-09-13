@@ -48,7 +48,7 @@ export var IteratorObservable = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
         }
         this.schedule(state);
     };
-    IteratorObservable.prototype._subscribe = function (subscriber) {
+    /** @deprecated internal use only */ IteratorObservable.prototype._subscribe = function (subscriber) {
         var index = 0;
         var _a = this, iterator = _a.iterator, scheduler = _a.scheduler;
         if (scheduler) {
@@ -169,4 +169,4 @@ function sign(value) {
     }
     return valueAsNumber < 0 ? -1 : 1;
 }
-//# sourceMappingURL=IteratorObservable.js.map 
+//# sourceMappingURL=IteratorObservable.js.map

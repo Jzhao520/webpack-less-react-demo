@@ -16,8 +16,8 @@ var AsyncAction = (function (_super) {
     function AsyncAction(scheduler, work) {
         _super.call(this, scheduler, work);
         this.scheduler = scheduler;
-        this.work = work;
         this.pending = false;
+        this.work = work;
     }
     AsyncAction.prototype.schedule = function (state, delay) {
         if (delay === void 0) { delay = 0; }
@@ -119,7 +119,7 @@ var AsyncAction = (function (_super) {
             return errorValue;
         }
     };
-    AsyncAction.prototype._unsubscribe = function () {
+    /** @deprecated internal use only */ AsyncAction.prototype._unsubscribe = function () {
         var id = this.id;
         var scheduler = this.scheduler;
         var actions = scheduler.actions;

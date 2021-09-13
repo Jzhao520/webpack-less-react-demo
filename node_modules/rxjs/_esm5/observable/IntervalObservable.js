@@ -84,7 +84,7 @@ export var IntervalObservable = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
         state.index += 1;
         this.schedule(state, period);
     };
-    IntervalObservable.prototype._subscribe = function (subscriber) {
+    /** @deprecated internal use only */ IntervalObservable.prototype._subscribe = function (subscriber) {
         var index = 0;
         var period = this.period;
         var scheduler = this.scheduler;
@@ -94,4 +94,4 @@ export var IntervalObservable = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
     };
     return IntervalObservable;
 }(Observable));
-//# sourceMappingURL=IntervalObservable.js.map 
+//# sourceMappingURL=IntervalObservable.js.map
